@@ -1,12 +1,18 @@
+import { motion } from 'framer-motion'
 import React from 'react'
 import styled from 'styled-components'
 
+import { AnimateInfo } from '../Animation'
 import UserInfo from './UserInfo'
 import UserPhoto from './UserPhoto'
 
 const Profile = () => {
   return (
-    <ProfileContainer>
+    <ProfileContainer
+      variants={AnimateInfo}
+      initial={'hidden'}
+      animate={'show'}
+    >
       <UserPhoto />
       <UserInfo />
     </ProfileContainer>
@@ -15,10 +21,9 @@ const Profile = () => {
 
 export default Profile
 
-const ProfileContainer = styled.div`
+const ProfileContainer = styled(motion.div)`
   display: flex;
   flex-direction: row;
-  background: #938e8e;
-  min-height: 100vh;
+  height: 100%;
   padding: 2rem;
 `

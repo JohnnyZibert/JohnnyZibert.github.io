@@ -1,0 +1,16 @@
+{
+  "en":{
+    "about": {
+      "photoDirection": "Zgirdan Eugeniu",
+      "title":"Hello, on this page you can get acquainted with the stack of technologies that I use in development, some works, as well as information on how to contact me.",
+      "aboutMeLarge":"About me: inquisitive, I like to master new technologies. I have a higher medical education. I want to be useful and contribute to the common cause. I am constantly striving to improve the quality of writing code. He is sociable and tactful enough to build friendly relations with colleagues.",
+      "titleStack": "My stack",
+      "titleWork": "My works",
+      "titleContact": "Contact me",
+      "aboutMe": "Обо мне"
+    },
+    "projectName":
+    { "photo": "Photo agency","ratingGames": "Rating of games","audioPlayer": "Audio player" },
+    "contactName": { "telegram": "Telegram", "vk": "Vkontakte", "instagram": "Instagram"}
+  }
+}

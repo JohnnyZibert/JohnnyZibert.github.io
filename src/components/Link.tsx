@@ -1,0 +1,47 @@
+import React, { FC } from 'react'
+import styled from 'styled-components'
+
+import { line } from '../Animation'
+import { Line } from './MyWork'
+
+interface IProps {
+  linkName: string
+  link: string
+  image: string
+}
+
+const LinkBlock: FC<IProps> = ({ linkName, link, image }) => {
+  return (
+    <LinkContainer>
+      <ul>
+        <li>
+          <img src={image} alt="icon" />
+          <NameLink>
+            <a href={link} target="_blank" rel="noreferrer">
+              {linkName}
+            </a>
+            <Line variants={line} initial="hidden" animate="show"></Line>
+          </NameLink>
+        </li>
+      </ul>
+    </LinkContainer>
+  )
+}
+
+export default LinkBlock
+
+const LinkContainer = styled.div`
+  img {
+    width: 3rem;
+    height: 3rem;
+    object-fit: cover;
+    margin-right: 1rem;
+  }
+  li {
+    display: flex;
+  }
+`
+
+const NameLink = styled.div`
+  width: 100%;
+`
