@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -14,6 +15,7 @@ import MyWork from './MyWork'
 const UserInfo = () => {
   const location = useLocation()
   const path = location.pathname
+  const { t } = useTranslation()
   return (
     <InfoContainer>
       {path === '/' && <AboutMe />}
@@ -23,7 +25,7 @@ const UserInfo = () => {
           initial={'hidden'}
           animate={'show'}
         >
-          <StackBlock>Мой стэк</StackBlock>
+          <StackBlock>{t('title stack')}</StackBlock>
           <IconMap>
             {DataUser.map((stack: IMyStack) => (
               <MyStack name={stack.name} key={stack.id} image={stack.image} />

@@ -15,20 +15,20 @@ const MyContacts = () => {
       initial={'hidden'}
       animate={'show'}
     >
-      <h1>{t('titlecontact', { nc: 'translation' })}</h1>
+      <h1>{t('title contact')}</h1>
       <LinkBlock
         link={'https://t.me/jenya18737'}
-        linkName={'Telegram'}
+        linkName={t('telegram title')}
         image={images.telegram}
       />
       <LinkBlock
         link={'https://vk.com/id140410473'}
-        linkName={'VK.COM'}
+        linkName={t('vk title')}
         image={images.vk}
       />
       <LinkBlock
         link={'https://www.instagram.com/zgirdan_zhenay/'}
-        linkName={'Instagram.com'}
+        linkName={t('instagram title')}
         image={images.instagram}
       />
       <LinkBlock
@@ -59,6 +59,10 @@ const ContactContainer = styled(motion.div)`
 
     li {
       padding-bottom: 1.5rem;
+      &:hover {
+        scale: 1.1;
+        transition: 0.5s;
+      }
     }
 
     a {

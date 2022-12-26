@@ -1,44 +1,31 @@
 import { motion } from 'framer-motion'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 
-import { AnimateInfo, line } from '../Animation'
+import { AnimateInfo } from '../Animation'
+import Work from './Work'
 
 const MyWork = () => {
+  const { t } = useTranslation()
+  const works = [
+    { url: 'https://github.com/JohnnyZibert/photo-app', title: 'photo agency' },
+    {
+      url: 'https://github.com/JohnnyZibert/games-shope-app',
+      title: 'rating games',
+    },
+    {
+      url: 'https://github.com/JohnnyZibert/music-player',
+      title: 'audio player',
+    },
+  ]
   return (
     <MyWorkStyled variants={AnimateInfo} initial={'hidden'} animate={'show'}>
-      <h1>Мои работы</h1>
+      <h1>{t('title work')}</h1>
       <ul>
-        <li>
-          <a
-            href="https://github.com/JohnnyZibert/photo-app"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Сайт фотоагенства
-          </a>
-          <Line variants={line} initial="hidden" animate="show"></Line>
-        </li>
-        <li>
-          <a
-            href="https://github.com/JohnnyZibert/games-shope-app"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Рейтинг игр
-          </a>
-          <Line variants={line} initial="hidden" animate="show"></Line>
-        </li>
-        <li>
-          <a
-            href="https://github.com/JohnnyZibert/music-player"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Аудиоплеер
-          </a>
-          <Line variants={line} initial="hidden" animate="show"></Line>
-        </li>
+        {works.map((work) => (
+          <Work key={work.url} url={work.url} title={work.title} />
+        ))}
       </ul>
     </MyWorkStyled>
   )
@@ -63,6 +50,10 @@ const MyWorkStyled = styled(motion.div)`
 
     li {
       padding-bottom: 3rem;
+      &:hover {
+        scale: 1.1;
+        transition: 0.5s;
+      }
     }
 
     a {

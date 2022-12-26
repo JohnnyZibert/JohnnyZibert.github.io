@@ -10,15 +10,14 @@ const AboutMe = () => {
 
   return (
     <AboutMeStyled variants={AnimateInfo} initial={'hidden'} animate={'show'}>
-      <h2>{t('')}</h2>
-      <h2>{t('Обо мне')}:</h2>
+      <h3>{t('Hello it`s me')}</h3>
+      <h2>{t('about me section')}:</h2>
       <ul>
-        <li>{t('Любознательный')}</li>
-        <li>{t('Люблю осваивать новые технологии')}</li>
-        <li>{t('Имею высшее образование')}</li>
-        <li>{t('Хочу быть полезен и вносить вклад в общее дело')}</li>
-        <li>{t('Постоянно стремлюсь к улучшению качества написания кода')}</li>
-        <li>{t('Коммуникабелен и тактичен при взаимодействии с коллегами')}</li>
+        <li>{t('i inquisitive')}</li>
+        <li>{t('medical education')}</li>
+        <li>{t('I want to be useful')}</li>
+        <li>{t('writing code')}</li>
+        <li>{t('i is sociable and tactful')}</li>
       </ul>
     </AboutMeStyled>
   )
@@ -37,7 +36,6 @@ const AboutMeStyled = styled(motion.div)`
   flex-direction: column;
   margin: 2rem;
   h2 {
-    font-weight: lighter;
     font-size: 1.5rem;
     margin-bottom: 1rem;
   }
@@ -53,5 +51,6 @@ const AboutMeStyled = styled(motion.div)`
   }
   li {
     padding: 0.5rem;
+    font-size: 1.25rem;
   }
 `
