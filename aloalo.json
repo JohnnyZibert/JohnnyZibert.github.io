@@ -1,0 +1,50 @@
+[
+  {
+    "axiosIcon": "https://i.ibb.co/B3qF7HZ/Axios.png",
+    "id": 5
+  },
+  {
+    "frameIcon": "https://i.ibb.co/Vm3MPb1/framer.png",
+    "id": 6
+  },
+  {
+    "gitIcon": "https://i.ibb.co/hFr47wb/git.jpg",
+    "id": 7
+  },
+  {
+    "instaIcon": "https://i.ibb.co/BL3f88Y/Insta.png",
+    "id": 8
+  },
+  {
+    "jsIcon": "https://i.ibb.co/4VyC3SS/JS.png",
+    "id": 9
+  },
+  {
+    "phoneIcon": "https://i.ibb.co/j85jBXW/phone.png",
+    "id": 10
+  },
+  {
+    "reactIcon": "https://i.ibb.co/vBTppgt/react.jpg",
+    "id": 11
+  },
+  {
+    "reduxIcon": "https://i.ibb.co/WFSpjcb/redux.png",
+    "id": 12
+  },
+  {
+    "styledIcon": "https://i.ibb.co/WH0YfsR/styled-comp.png",
+    "id": 13
+  },
+  {
+    "telegramIcon": "https://i.ibb.co/3Cqc3BV/telega.png",
+    "id": 14
+  },
+  {
+    "typesIcon": "https://i.ibb.co/vLY7b3M/typescript.png",
+    "id": 15
+  },
+  {
+    "vkontactetIcon": "https://i.ibb.co/Z6Knf0q/VK.png",
+    "id": 16
+  }
+]
