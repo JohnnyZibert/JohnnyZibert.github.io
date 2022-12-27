@@ -5,14 +5,15 @@ import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
-import { RootState } from '../store/Store'
+import { selectorPhotos } from '../store/getPhotos/Selector'
+import { IPhoto } from '../types'
 import MyLoader from '../UI/Sceleton'
 import { getAge } from '../utils/getAge'
 
 const UserPhoto: FC = () => {
-  const { photos, isLoading } = useSelector((state: RootState) => state.photos)
+  const { photos, isLoading } = useSelector(selectorPhotos())
 
-  const [currentPhotos, setCurrentPhotos] = useState(() => photos[0])
+  const [currentPhotos, setCurrentPhotos] = useState<IPhoto>(() => photos[0])
 
   useEffect(() => setCurrentPhotos(() => photos[0]), [photos])
 
@@ -78,6 +79,12 @@ const UserStyled = styled.div`
     color: #332b1a;
     margin-bottom: 0.5rem;
   }
+  @media (max-width: 817px) {
+    width: 100%;
+    h2 {
+      text-align: center;
+    }
+  } ;
 `
 const Image = styled.img`
   height: 60vh;
@@ -87,6 +94,10 @@ const Image = styled.img`
   margin: 2rem 2rem 1rem 2rem;
   width: 300px;
   cursor: pointer;
+  @media (max-width: 520px) {
+    scale: 0.8;
+    margin: 0;
+  }
 `
 const Age = styled.div`
   display: flex;
@@ -96,13 +107,26 @@ const Photo = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   &:hover {
     scale: 1.2;
     transition: 0.5s;
+  }
+  @media (max-width: 520px) {
+    &:hover {
+      scale: 1;
+    }
   }
 `
 
 const AngelIcon = styled(FontAwesomeIcon)`
   color: gray;
   cursor: pointer;
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+  @media (max-width: 520px) {
+    scale: 0.8;
+  }
 `

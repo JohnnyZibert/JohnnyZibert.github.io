@@ -54,6 +54,9 @@ const MyWorkStyled = styled(motion.div)`
         scale: 1.1;
         transition: 0.5s;
       }
+      @media (max-width: 490px) {
+        text-align: center;
+      }
     }
 
     a {
@@ -61,6 +64,9 @@ const MyWorkStyled = styled(motion.div)`
       text-decoration: none;
       font-size: 1.5rem;
     }
+  }
+  @media (max-width: 490px) {
+    margin: 1rem 0;
   }
 `
 export const Line = styled(motion.div)`

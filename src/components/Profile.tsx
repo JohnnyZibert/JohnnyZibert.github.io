@@ -8,14 +8,16 @@ import UserPhoto from './UserPhoto'
 
 const Profile = () => {
   return (
-    <ProfileContainer
-      variants={AnimateInfo}
-      initial={'hidden'}
-      animate={'show'}
-    >
-      <UserPhoto />
-      <UserInfo />
-    </ProfileContainer>
+    <>
+      <ProfileContainer
+        variants={AnimateInfo}
+        initial={'hidden'}
+        animate={'show'}
+      >
+        <UserPhoto />
+        <UserInfo />
+      </ProfileContainer>
+    </>
   )
 }
 
@@ -26,4 +28,8 @@ const ProfileContainer = styled(motion.div)`
   flex-direction: row;
   height: 100%;
   padding: 2rem;
+  @media (max-width: 813px) {
+    display: block;
+    padding: 0 2rem;
+  }
 `

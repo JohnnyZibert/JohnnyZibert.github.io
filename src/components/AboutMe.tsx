@@ -53,4 +53,8 @@ const AboutMeStyled = styled(motion.div)`
     padding: 0.5rem;
     font-size: 1.25rem;
   }
+  @media (max-width: 438px) {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
 `

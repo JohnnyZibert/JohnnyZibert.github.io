@@ -1,21 +1,35 @@
 import { motion } from 'framer-motion'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { AnimateInfo } from '../Animation'
-import { DataUser } from '../data'
-import { IMyStack } from '../types'
+import { getStackIconsRequest } from '../store/getStackIcons/getStackIconsRequest'
+import { selectorStackIcons } from '../store/getStackIcons/Selector'
+import { useAppDispatch } from '../store/Store'
+import { IStackIcons } from '../types'
 import AboutMe from './AboutMe'
 import MyContacts from './MyContacts'
 import MyStack from './MyStack'
 import MyWork from './MyWork'
 
 const UserInfo = () => {
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(getStackIconsRequest())
+  }, [dispatch])
+
+  const { stackIcons } = useSelector(selectorStackIcons())
+
   const location = useLocation()
+
   const path = location.pathname
+
   const { t } = useTranslation()
+
   return (
     <InfoContainer>
       {path === '/' && <AboutMe />}
@@ -27,8 +41,8 @@ const UserInfo = () => {
         >
           <StackBlock>{t('title stack')}</StackBlock>
           <IconMap>
-            {DataUser.map((stack: IMyStack) => (
-              <MyStack name={stack.name} key={stack.id} image={stack.image} />
+            {stackIcons.map((stack: IStackIcons) => (
+              <MyStack key={`${stack.id}${stack.name}`} imgUrl={stack.imgUrl} />
             ))}
           </IconMap>
         </MyStackContainer>
@@ -44,6 +58,9 @@ export default UserInfo
 const InfoContainer = styled.div`
   max-width: 50%;
   width: 100%;
+  @media (max-width: 817px) {
+    max-width: 100%;
+  } ;
 `
 const StackBlock = styled.h1`
   text-align: center;
@@ -63,6 +80,9 @@ const MyStackContainer = styled(motion.div)`
     height: 5rem;
     object-fit: cover;
   }
+  @media (max-width: 730px) {
+    margin: 1rem 0;
+  } ;
 `
 const IconMap = styled.div`
   display: flex;

@@ -1,21 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+import { IGetPhotos } from '../../types'
 import { getPhotosRequest } from './getPhotosRequest'
 
-interface IPhotos {
-  photos: {
-    imgUrl: string
-    id: number
-  }[]
-}
+type IPhotosAction = Omit<IGetPhotos, 'isLoading'>
 
-interface IGetPhotos {
-  photos: {
-    imgUrl: string
-    id: number
-  }[]
-  isLoading: boolean
-}
 const initialState: IGetPhotos = {
   photos: [
     {
@@ -36,7 +25,7 @@ export const getPhotosSlice = createSlice({
     })
     builder.addCase(
       getPhotosRequest.fulfilled,
-      (state, { payload }: PayloadAction<IPhotos>) => {
+      (state, { payload }: PayloadAction<IPhotosAction>) => {
         state.photos = payload.photos
         state.isLoading = false
       }

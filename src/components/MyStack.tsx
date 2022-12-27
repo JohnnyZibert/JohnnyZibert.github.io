@@ -4,12 +4,11 @@ import styled from 'styled-components'
 
 import { lineForIcon } from '../Animation'
 import { IMyStack } from '../types'
-import { Line } from './MyWork'
 
-const MyStack: FC<IMyStack> = ({ image }) => {
+const MyStack: FC<IMyStack> = ({ imgUrl }) => {
   return (
     <IconWrapper>
-      <motion.img src={image} alt="icon" />
+      <motion.img src={imgUrl} alt="icon" />
       <Line variants={lineForIcon} initial="hidden" animate="show"></Line>
     </IconWrapper>
   )
@@ -27,5 +26,23 @@ const IconWrapper = styled.div`
   }
   img {
     border-radius: 0.5rem;
+    @media (max-width: 470px) {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      scale: 0.7;
+      margin: 0;
+    }
+  }
+  @media (max-width: 470px) {
+    flex-wrap: nowrap;
+    margin: 0;
+  }
+`
+export const Line = styled(motion.div)`
+  background: #23d997;
+  height: 0.5rem;
+  @media (max-width: 470px) {
+    scale: 0.7;
   }
 `
