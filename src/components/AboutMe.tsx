@@ -34,7 +34,6 @@ const AboutMeStyled = styled(motion.div)`
   overflow: hidden;
   justify-content: center;
   flex-direction: column;
-  margin: 2rem;
   h2 {
     font-size: 1.5rem;
     margin-bottom: 1rem;

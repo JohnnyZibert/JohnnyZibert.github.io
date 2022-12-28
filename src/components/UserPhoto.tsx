@@ -44,7 +44,9 @@ const UserPhoto: FC = () => {
         {isLoading ? (
           <MyLoader />
         ) : (
-          <Image src={currentPhotos.imgUrl} alt="userPhoto" />
+          <PhotoContainer>
+            <Image src={currentPhotos.imgUrl} alt="userPhoto" />
+          </PhotoContainer>
         )}
         <AngelIcon
           icon={faAngleRight}
@@ -66,7 +68,6 @@ const UserPhoto: FC = () => {
 export default UserPhoto
 
 const UserStyled = styled.div`
-  width: 50%;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -86,17 +87,41 @@ const UserStyled = styled.div`
     }
   } ;
 `
+const PhotoContainer = styled.div`
+  height: 400px;
+  width: 300px;
+  img {
+    object-fit: cover;
+    &:hover {
+      scale: 1.05;
+      transition: 0.5s;
+    }
+  }
+  @media (max-width: 500px) {
+    img {
+      object-fit: cover;
+      &:hover {
+        scale: 0.8;
+      }
+    }
+  }
+`
 const Image = styled.img`
-  height: 60vh;
-  object-fit: cover;
   border-radius: 2rem;
   overflow: hidden;
-  margin: 2rem 2rem 1rem 2rem;
-  width: 300px;
+  width: 100%;
+  height: 100%;
   cursor: pointer;
+
   @media (max-width: 520px) {
     scale: 0.8;
     margin: 0;
+    img {
+      &:hover {
+        scale: 1;
+        transition: 0.5s;
+      }
+    }
   }
 `
 const Age = styled.div`
@@ -108,10 +133,7 @@ const Photo = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  &:hover {
-    scale: 1.2;
-    transition: 0.5s;
-  }
+  margin-bottom: 0.5rem;
   @media (max-width: 520px) {
     &:hover {
       scale: 1;
@@ -122,11 +144,17 @@ const Photo = styled.div`
 const AngelIcon = styled(FontAwesomeIcon)`
   color: gray;
   cursor: pointer;
+  margin: 0 1rem;
+  &:hover {
+    scale: 1.2;
+    transition: all 0.5s;
+  }
   svg {
     width: 100%;
     height: 100%;
   }
   @media (max-width: 520px) {
     scale: 0.8;
+    margin: 0;
   }
 `

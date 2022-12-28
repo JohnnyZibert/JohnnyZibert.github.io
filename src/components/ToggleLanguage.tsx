@@ -1,29 +1,23 @@
-import React, { memo, useState } from 'react'
+import React, { memo } from 'react'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 import i18n from '../i18n'
-
-interface IActiveLanguage {
-  ru: boolean
-  en: boolean
-}
+import { setCurrentLanguage } from '../store/commonSlice/toggleLanguageSlice'
+import { RootState, useAppDispatch } from '../store/Store'
 
 export const ToggleLanguage = memo(() => {
-  const [activeLanguage, setActiveLanguage] = useState<IActiveLanguage>({
-    ru: true,
-    en: false,
-  })
+  const dispatch = useAppDispatch()
+  const { currentLanguage } = useSelector(
+    (state: RootState) => state.currentLanguage
+  )
 
   const changeLanguage = (lng: string | undefined) => {
     i18n.changeLanguage(lng)
     if (lng === 'ru') {
-      setActiveLanguage((prevState) => {
-        return { ...prevState, ru: true, en: false }
-      })
+      dispatch(setCurrentLanguage({ ru: true, en: false }))
     } else {
-      setActiveLanguage((prevState) => {
-        return { ...prevState, ru: false, en: true }
-      })
+      dispatch(setCurrentLanguage({ ru: false, en: true }))
     }
   }
   return (
@@ -32,7 +26,7 @@ export const ToggleLanguage = memo(() => {
         <div
           onClick={() => changeLanguage('ru')}
           style={
-            activeLanguage.ru
+            currentLanguage.ru
               ? { background: '#23d997', color: 'white' }
               : { background: 'white' }
           }
@@ -42,7 +36,7 @@ export const ToggleLanguage = memo(() => {
         <div
           onClick={() => changeLanguage('en')}
           style={
-            activeLanguage.en
+            currentLanguage.en
               ? { background: '#23d997', color: 'white' }
               : { background: 'white' }
           }
@@ -60,13 +54,6 @@ const ToggleContainer = styled.div`
   justify-content: flex-end;
   align-items: center;
 
-  span {
-    padding: 0.25rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    margin-right: 10px;
-    transition: 0.75s;
-  }
   @media (max-width: 520px) {
     display: flex;
     justify-content: flex-end;
@@ -88,6 +75,14 @@ const Language = styled.div`
     &:hover {
       color: #23d997;
       transition: 0.5s;
+    }
+    @media (max-width: 812px) {
+      margin-top: 0.5rem;
+    }
+    @media (max-width: 520px) {
+      margin-right: 0;
+      font-size: 1rem;
+      margin-top: 0.3rem;
     }
   }
   @media (max-width: 930px) {

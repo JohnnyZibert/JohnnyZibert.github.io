@@ -56,7 +56,6 @@ const UserInfo = () => {
 export default UserInfo
 
 const InfoContainer = styled.div`
-  max-width: 50%;
   width: 100%;
   @media (max-width: 817px) {
     max-width: 100%;
@@ -74,7 +73,6 @@ const MyStackContainer = styled(motion.div)`
   overflow: hidden;
   justify-content: center;
   flex-direction: column;
-  margin: 2rem;
   img {
     width: 5rem;
     height: 5rem;
@@ -88,4 +86,5 @@ const IconMap = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 `

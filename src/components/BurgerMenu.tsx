@@ -38,6 +38,9 @@ const BurgerMenuStyled = styled.div`
   width: 10%;
   svg {
     margin: 0.5rem;
+    @media (max-width: 500px) {
+      scale: 0.8;
+    }
   }
   @media (max-width: 813px) {
     display: flex;

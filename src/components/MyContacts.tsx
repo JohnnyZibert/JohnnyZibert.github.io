@@ -49,7 +49,6 @@ const ContactContainer = styled(motion.div)`
   border-radius: 2rem;
   overflow: hidden;
   padding: 2rem;
-  margin: 2rem;
 
   h1 {
     text-align: center;
@@ -58,7 +57,6 @@ const ContactContainer = styled(motion.div)`
 
   ul {
     list-style: none;
-
     li {
       padding-bottom: 1.5rem;
       &:hover {

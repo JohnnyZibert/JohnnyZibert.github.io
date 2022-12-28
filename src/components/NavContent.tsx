@@ -1,39 +1,60 @@
-import React, { useState } from 'react'
+import React, { FC, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
+import { setCurrentSection } from '../store/commonSlice/selectedTitleNav'
+import { RootState, useAppDispatch } from '../store/Store'
 import { ToggleLanguage } from './ToggleLanguage'
-
-interface ITitle {
-  title: string
-  active: boolean
-  id: number
-  link: string
+interface IProps {
+  setVisibleNav?: (arg0: boolean) => void
+  visibleNav?: boolean
 }
 
-export const NavContent = React.memo(() => {
-  const { t } = useTranslation(['translation'])
-  const navInfo = [
-    { title: 'about me title', active: false, id: 1, link: '/' },
-    { title: 'title stack', active: false, id: 2, link: '/stack' },
-    { title: 'title work', active: false, id: 3, link: '/my-work' },
-    { title: 'title contact', active: false, id: 4, link: '/my-contact' },
-  ]
-  const [currentTitle, setCurrentTitle] = useState<ITitle[]>(navInfo)
+export const NavContent: FC<IProps> = React.memo(
+  ({ setVisibleNav, visibleNav }) => {
+    const dispatch = useAppDispatch()
+    const { t } = useTranslation(['translation'])
+    const { navInfo } = useSelector((state: RootState) => state.infoNav)
 
-  const handleSelectSection = (id: number) => {
-    const selectedTitle = currentTitle.map((selected) => {
-      selected.id === id ? (selected.active = true) : (selected.active = false)
-      return selected
-    })
-    setCurrentTitle(selectedTitle)
-  }
-  return (
-    <>
-      <NavStyled>
+    const handleSelectSection = React.useCallback(
+      (id: number) => {
+        const selectedTitle = navInfo.map((selected) => {
+          if (selected.id === id) {
+            return { ...selected, active: true }
+          } else {
+            return { ...selected, active: false }
+          }
+        })
+        dispatch(setCurrentSection(selectedTitle))
+      },
+      [dispatch]
+    )
+
+    const ref = useRef()
+
+    useEffect(() => {
+      const checkIfClickedOutside = (e: { target: EventTarget | null }) => {
+        // @ts-ignore
+        if (visibleNav && ref.current && !ref.current.contains(e.target)) {
+          setVisibleNav && setVisibleNav(false)
+        }
+      }
+
+      document.addEventListener('mousedown', checkIfClickedOutside)
+
+      return () => {
+        // Cleanup the event listener
+        document.removeEventListener('mousedown', checkIfClickedOutside)
+      }
+    }, [visibleNav])
+
+    return (
+      // @ts-ignore
+      <NavStyled ref={ref}>
         <ul>
-          {currentTitle.map((itemTitle) => (
+          {navInfo.map((itemTitle) => (
             <Link to={`${itemTitle.link}`} key={itemTitle.id}>
               <li
                 onClick={() => handleSelectSection(itemTitle.id)}
@@ -50,9 +71,9 @@ export const NavContent = React.memo(() => {
         </ul>
         <ToggleLanguage />
       </NavStyled>
-    </>
-  )
-})
+    )
+  }
+)
 
 const NavStyled = styled.div`
   display: flex;
@@ -64,6 +85,18 @@ const NavStyled = styled.div`
   box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
   background: white;
   justify-content: flex-end;
+  @media (max-width: 930px) {
+    padding: 0.5rem 1rem;
+  }
+  @media (max-width: 812px) {
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column-reverse;
+    left: 0;
+    width: 40%;
+    transition: all 0.5s;
+    min-height: 110vh;
+  }
 
   a {
     color: black;
@@ -75,7 +108,6 @@ const NavStyled = styled.div`
     flex-direction: row;
     list-style: none;
     @media (max-width: 813px) {
-      display: flex;
       flex-direction: column;
       justify-content: flex-start;
     }
@@ -91,16 +123,11 @@ const NavStyled = styled.div`
       color: #23d997;
       transition: 0.5s;
     }
-    @media (max-width: 400px) {
-      padding: 0.5rem 1rem;
+    @media (max-width: 500px) {
+      padding: 0.5rem;
       text-align: center;
+      font-size: 1.25rem;
+      margin: 1rem 0;
     }
-  }
-  @media (max-width: 930px) {
-    padding: 0.5rem 1rem;
-  }
-  @media (max-width: 813px) {
-    justify-content: flex-start;
-    flex-direction: column-reverse;
   }
 `

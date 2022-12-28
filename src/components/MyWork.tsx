@@ -38,7 +38,6 @@ const MyWorkStyled = styled(motion.div)`
   background: #dad8d8;
   border-radius: 2rem;
   overflow: hidden;
-  margin: 2rem;
 
   h1 {
     text-align: center;

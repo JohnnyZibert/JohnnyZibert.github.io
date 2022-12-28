@@ -18,8 +18,9 @@ export default MyStack
 
 const IconWrapper = styled.div`
   display: block;
-  margin: 2rem;
+  margin: 1rem;
   cursor: pointer;
+
   &:hover {
     scale: 1.2;
     transition: 0.5s;
