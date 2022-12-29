@@ -59,6 +59,9 @@ const InfoContainer = styled.div`
   width: 100%;
   @media (max-width: 817px) {
     max-width: 100%;
+  }
+  @media (max-width: 400px) {
+    padding: 0 1rem;
   } ;
 `
 const StackBlock = styled.h1`

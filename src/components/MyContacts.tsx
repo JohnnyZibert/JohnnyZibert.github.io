@@ -59,9 +59,10 @@ const ContactContainer = styled(motion.div)`
     list-style: none;
     li {
       padding-bottom: 1.5rem;
+      transition: 0.5s ease-in-out;
+      cursor: pointer;
       &:hover {
         scale: 1.05;
-        transition: 0.5s;
       }
     }
 

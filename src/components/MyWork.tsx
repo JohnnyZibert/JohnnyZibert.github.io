@@ -49,9 +49,9 @@ const MyWorkStyled = styled(motion.div)`
 
     li {
       padding-bottom: 3rem;
+      transition: 0.5s ease-in-out;
       &:hover {
         scale: 1.1;
-        transition: 0.5s;
       }
       @media (max-width: 490px) {
         text-align: center;

@@ -33,4 +33,8 @@ const ProfileContainer = styled(motion.div)`
     display: block;
     padding: 0 2rem;
   }
+  @media (max-width: 400px) {
+    display: block;
+    padding: 0;
+  }
 `

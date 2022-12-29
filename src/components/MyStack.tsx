@@ -20,10 +20,9 @@ const IconWrapper = styled.div`
   display: block;
   margin: 1rem;
   cursor: pointer;
-
+  transition: 0.5s ease-in-out;
   &:hover {
     scale: 1.2;
-    transition: 0.5s;
   }
   img {
     border-radius: 0.5rem;

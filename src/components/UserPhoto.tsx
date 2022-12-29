@@ -92,14 +92,17 @@ const PhotoContainer = styled.div`
   width: 300px;
   img {
     object-fit: cover;
+    transition: 0.5s ease-in-out;
     &:hover {
       scale: 1.05;
-      transition: 0.5s;
     }
   }
   @media (max-width: 500px) {
+    height: 350px;
+    width: 270px;
     img {
       object-fit: cover;
+      transition: 0.5s ease-in-out;
       &:hover {
         scale: 0.8;
       }
@@ -117,9 +120,9 @@ const Image = styled.img`
     scale: 0.8;
     margin: 0;
     img {
+      transition: 0.5s ease-in-out;
       &:hover {
         scale: 1;
-        transition: 0.5s;
       }
     }
   }
@@ -135,6 +138,7 @@ const Photo = styled.div`
   justify-content: center;
   margin-bottom: 0.5rem;
   @media (max-width: 520px) {
+    transition: 0.5s ease-in-out;
     &:hover {
       scale: 1;
     }
@@ -145,9 +149,9 @@ const AngelIcon = styled(FontAwesomeIcon)`
   color: gray;
   cursor: pointer;
   margin: 0 1rem;
+  transition: 0.5s ease-in-out;
   &:hover {
     scale: 1.2;
-    transition: all 0.5s;
   }
   svg {
     width: 100%;

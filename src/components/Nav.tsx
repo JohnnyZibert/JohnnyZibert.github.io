@@ -1,17 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 import BurgerMenu from './BurgerMenu'
 import { NavContent } from './NavContent'
+import { useOutsideClick } from './OutsideClick'
 
 export const Nav = () => {
-  const [visibleNav, setVisibleNav] = useState<boolean>(false)
+  const { ref, setVisible, visible } = useOutsideClick(false)
 
   return (
-    <OpenBurgerStyled>
-      <BurgerMenu setVisibleNav={setVisibleNav} visibleNav={visibleNav} />
+    <OpenBurgerStyled ref={ref}>
+      <BurgerMenu setVisibleNav={setVisible} visibleNav={visible} />
       <NavContentContainer>
-        <NavContent setVisibleNav={setVisibleNav} visibleNav={visibleNav} />
+        <NavContent />
       </NavContentContainer>
     </OpenBurgerStyled>
   )
@@ -23,7 +24,13 @@ const OpenBurgerStyled = styled.nav`
   z-index: 2;
   display: flex;
   justify-content: center;
+  width: 100%;
   @media (max-width: 814px) {
+    display: flex;
+    justify-content: flex-start;
+  }
+  @media (max-width: 500px) {
+    width: 150px;
     display: flex;
     justify-content: flex-start;
   }

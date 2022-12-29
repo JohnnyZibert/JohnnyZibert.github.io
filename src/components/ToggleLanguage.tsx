@@ -72,9 +72,11 @@ const Language = styled.div`
     margin-right: 1rem;
     border-radius: 0.5rem;
     padding: 0.25rem;
+    transition: 0.5s ease-in-out;
     &:hover {
       color: #23d997;
       transition: 0.5s;
+      scale: 1.1;
     }
     @media (max-width: 812px) {
       margin-top: 0.5rem;
