@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { setCurrentSection } from '../store/commonSlice/selectedTitleNav'
@@ -10,13 +10,19 @@ import { ToggleLanguage } from './ToggleLanguage'
 
 export const NavContent = React.memo(() => {
   const dispatch = useAppDispatch()
+
+  const { pathname } = useLocation()
+
+  const navigate = useNavigate()
+
   const { t } = useTranslation(['translation'])
   const { navInfo } = useSelector((state: RootState) => state.infoNav)
 
   const onSelectCategory = React.useCallback(
-    (id: number) => {
+    (id: string) => {
+      navigate(`${id}`)
       const selectedTitle = navInfo.map((selected) => {
-        if (selected.id === id) {
+        if (selected.link === id) {
           return {
             ...selected,
             active: true,
@@ -30,25 +36,23 @@ export const NavContent = React.memo(() => {
       })
       dispatch(setCurrentSection(selectedTitle))
     },
-    [dispatch]
+    [dispatch, navigate]
   )
 
   return (
     <NavStyled>
       <ul>
         {navInfo.map((itemTitle) => (
-          <Link to={`${itemTitle.link}`} key={itemTitle.id}>
-            <li
-              onClick={() => onSelectCategory(itemTitle.id)}
-              style={
-                itemTitle.active
-                  ? { background: '#23d997', color: 'white' }
-                  : { background: 'white' }
-              }
-            >
-              {t(`${itemTitle.title}`)}
-            </li>
-          </Link>
+          <li
+            onClick={() => onSelectCategory(`${itemTitle.link}`)}
+            style={
+              itemTitle.link === pathname
+                ? { background: '#23d997', color: 'white' }
+                : { background: 'white' }
+            }
+          >
+            {t(`${itemTitle.title}`)}
+          </li>
         ))}
       </ul>
       <ToggleLanguage />
@@ -108,10 +112,10 @@ const NavStyled = styled.div`
     padding: 0.5rem 2rem;
     cursor: pointer;
     border-radius: 0.5rem;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: lighter;
     transition: 0.5s ease-in-out;
-    margin: 0 0.5rem;
+    margin: 0 0.7rem;
     &:hover {
       color: #23d997;
       transition: 0.5s;

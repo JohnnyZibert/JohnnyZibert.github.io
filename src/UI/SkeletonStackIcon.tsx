@@ -2,7 +2,9 @@ import React from 'react'
 import ContentLoader, { IContentLoaderProps } from 'react-content-loader'
 import styled from 'styled-components'
 
-const MyLoader = (props: JSX.IntrinsicAttributes & IContentLoaderProps) => (
+const SkeletonStackIcon = (
+  props: JSX.IntrinsicAttributes & IContentLoaderProps
+) => (
   <Skeleton>
     <ContentLoader
       speed={2}
@@ -18,8 +20,13 @@ const MyLoader = (props: JSX.IntrinsicAttributes & IContentLoaderProps) => (
   </Skeleton>
 )
 
-export default MyLoader
+export default SkeletonStackIcon
 
 const Skeleton = styled.div`
-  margin: 2rem;
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+  @media (max-width: 500px) {
+    scale: 0.8;
+  }
 `

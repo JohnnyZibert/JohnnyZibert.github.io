@@ -1,14 +1,22 @@
 import { motion } from 'framer-motion'
 import React, { FC } from 'react'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 import { lineForIcon } from '../Animation'
+import { RootState } from '../store/Store'
 import { IMyStack } from '../types'
+import SkeletonStackIcon from '../UI/SkeletonStackIcon'
 
 const MyStack: FC<IMyStack> = ({ imgUrl }) => {
+  const { isLoading } = useSelector((state: RootState) => state.stackIcons)
   return (
     <IconWrapper>
-      <motion.img src={imgUrl} alt="icon" />
+      {isLoading ? (
+        <SkeletonStackIcon />
+      ) : (
+        <motion.img src={imgUrl} alt="icon" />
+      )}
       <Line variants={lineForIcon} initial="hidden" animate="show"></Line>
     </IconWrapper>
   )

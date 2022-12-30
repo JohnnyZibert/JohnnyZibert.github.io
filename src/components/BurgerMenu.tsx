@@ -16,7 +16,6 @@ export const BurgerMenu: FC<IProps> = ({ setVisibleNav, visibleNav }) => {
   const handleVisibleNav = () => {
     setVisibleNav(!visibleNav)
   }
-
   return (
     <div>
       <BurgerMenuStyled>
@@ -27,7 +26,6 @@ export const BurgerMenu: FC<IProps> = ({ setVisibleNav, visibleNav }) => {
           variants={OpenBurger}
           initial={'hidden'}
           animate={'show'}
-          exit={'exit'}
         >
           <NavContent />
         </NavContentStyled>
@@ -44,6 +42,8 @@ const BurgerMenuStyled = styled.div`
   z-index: 20;
   color: gray;
   width: 10%;
+  cursor: pointer;
+  transition: 1s;
   svg {
     margin: 0.5rem;
     @media (max-width: 500px) {
@@ -60,10 +60,14 @@ const NavContentStyled = styled(motion.div)`
   left: 0;
   z-index: 10;
   width: 100%;
-  transform: translateX(-100%);
-  transition: all 0.5s ease;
-  opacity: 0;
+  opacity: 1;
   @media (min-width: 813px) {
     display: none;
   }
 `
+//
+// styled.div<{ visibleNav: boolean }
+// left: ${(props) =>
+//   props.visibleNav
+//     ? { transform: 'translateX(0%)' }
+//     : { transform: 'translateX(-100%)' }};

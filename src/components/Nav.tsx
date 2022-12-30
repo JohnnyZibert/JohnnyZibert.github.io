@@ -24,10 +24,10 @@ const OpenBurgerStyled = styled.nav`
   z-index: 2;
   display: flex;
   justify-content: center;
-  width: 100%;
   @media (max-width: 814px) {
     display: flex;
     justify-content: flex-start;
+    width: 150px;
   }
   @media (max-width: 500px) {
     width: 150px;
@@ -38,6 +38,7 @@ const OpenBurgerStyled = styled.nav`
 
 const NavContentContainer = styled.div`
   width: 100%;
+
   @media (max-width: 813px) {
     display: none;
   }

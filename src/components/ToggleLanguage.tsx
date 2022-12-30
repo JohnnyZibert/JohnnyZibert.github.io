@@ -85,6 +85,7 @@ const Language = styled.div`
       margin-right: 0;
       font-size: 1rem;
       margin-top: 0.3rem;
+      margin-left: 0.3rem;
     }
   }
   @media (max-width: 930px) {

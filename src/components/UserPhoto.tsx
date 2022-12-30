@@ -7,7 +7,7 @@ import styled from 'styled-components'
 
 import { selectorPhotos } from '../store/getPhotos/Selector'
 import { IPhoto } from '../types'
-import MyLoader from '../UI/Sceleton'
+import SkeletonIcon from '../UI/Skeleton'
 import { getAge } from '../utils/getAge'
 
 const UserPhoto: FC = () => {
@@ -42,7 +42,7 @@ const UserPhoto: FC = () => {
           size={'2x'}
         />
         {isLoading ? (
-          <MyLoader />
+          <SkeletonIcon width={300} height={450} />
         ) : (
           <PhotoContainer>
             <Image src={currentPhotos.imgUrl} alt="userPhoto" />
@@ -100,11 +100,11 @@ const PhotoContainer = styled.div`
   @media (max-width: 500px) {
     height: 350px;
     width: 270px;
+    transition: 0.5s ease-in-out;
     img {
       object-fit: cover;
-      transition: 0.5s ease-in-out;
       &:hover {
-        scale: 0.8;
+        scale: 0.9;
       }
     }
   }

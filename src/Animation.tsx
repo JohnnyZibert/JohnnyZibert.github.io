@@ -25,6 +25,7 @@ export const AnimateInfo = {
     opacity: 1,
     transition: {
       duration: 1,
+      ease: 'linear',
     },
   },
 }
@@ -35,7 +36,17 @@ export const OpenBurger = {
     x: '0%',
     opacity: 1,
     transition: {
-      duration: 0.5,
+      ease: 'linear',
+      duration: 0.3,
+    },
+  },
+  exit: {
+    x: '-100%',
+    opacity: 0,
+    duration: 0.3,
+    ease: 'easeInOut',
+    transition: {
+      ease: 'linear',
     },
   },
 }

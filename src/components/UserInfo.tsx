@@ -55,7 +55,7 @@ const UserInfo = () => {
 
 export default UserInfo
 
-const InfoContainer = styled.div`
+const InfoContainer = styled(motion.div)`
   width: 100%;
   @media (max-width: 817px) {
     max-width: 100%;
